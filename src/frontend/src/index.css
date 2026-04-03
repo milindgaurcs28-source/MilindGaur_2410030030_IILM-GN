@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fonts ─────────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* ── Core surfaces ─────────────────────────────────────────────────── */
+    --background: 0.985 0.003 264;
+    --foreground: 0.18 0.025 264;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.025 264;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.025 264;
+
+    /* ── Brand ─────────────────────────────────────────────────────────── */
+    --primary: 0.55 0.17 148;
+    --primary-foreground: 1 0 0;
+
+    --secondary: 0.32 0.12 148;
+    --secondary-foreground: 0.985 0 0;
+
+    /* Accent = subtle blue */
+    --accent: 0.5 0.22 258;
+    --accent-foreground: 1 0 0;
+
+    /* ── Neutrals ──────────────────────────────────────────────────────── */
+    --muted: 0.96 0.005 264;
+    --muted-foreground: 0.52 0.02 264;
+
+    --border: 0.9 0.008 264;
+    --input: 0.9 0.008 264;
+    --ring: 0.55 0.17 148;
+
+    /* ── Destructive ───────────────────────────────────────────────────── */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* ── Charts ────────────────────────────────────────────────────────── */
+    --chart-1: 0.55 0.17 148;
+    --chart-2: 0.5 0.22 258;
+    --chart-3: 0.78 0.07 167;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* ── Sidebar ───────────────────────────────────────────────────────── */
+    --sidebar: 0.985 0.003 264;
+    --sidebar-foreground: 0.18 0.025 264;
+    --sidebar-primary: 0.55 0.17 148;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.96 0.005 264;
+    --sidebar-accent-foreground: 0.18 0.025 264;
+    --sidebar-border: 0.9 0.008 264;
+    --sidebar-ring: 0.55 0.17 148;
+  }
+
+  .dark {
+    --background: 0.14 0.015 264;
+    --foreground: 0.96 0.005 264;
+    --card: 0.18 0.02 264;
+    --card-foreground: 0.96 0.005 264;
+    --popover: 0.22 0.018 264;
+    --popover-foreground: 0.96 0.005 264;
+    --primary: 0.65 0.17 148;
+    --primary-foreground: 0.12 0.02 148;
+    --secondary: 0.24 0.03 264;
+    --secondary-foreground: 0.96 0.005 264;
+    --accent: 0.6 0.22 258;
+    --accent-foreground: 0.12 0.02 264;
+    --muted: 0.24 0.015 264;
+    --muted-foreground: 0.62 0.015 264;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.65 0.17 148;
+    --chart-1: 0.65 0.17 148;
+    --chart-2: 0.6 0.22 258;
+    --chart-3: 0.78 0.07 167;
+    --chart-4: 0.627 0.265 303.9;
+    --chart-5: 0.645 0.246 16.439;
+    --sidebar: 0.18 0.02 264;
+    --sidebar-foreground: 0.96 0.005 264;
+    --sidebar-primary: 0.65 0.17 148;
+    --sidebar-primary-foreground: 0.12 0.02 148;
+    --sidebar-accent: 0.24 0.015 264;
+    --sidebar-accent-foreground: 0.96 0.005 264;
+    --sidebar-border: 1 0 0 / 12%;
+    --sidebar-ring: 0.65 0.17 148;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ── Brand gradient & texture utilities ────────────────────────────────── */
+@layer components {
+  /* Nav + footer: dark forest green gradient */
+  .pv-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(0.28 0.12 148),
+      oklch(0.38 0.14 148)
+    );
+  }
+
+  /* Hero section: richer, deeper */
+  .pv-gradient-hero {
+    background: linear-gradient(
+      140deg,
+      oklch(0.24 0.12 148) 0%,
+      oklch(0.32 0.14 148) 50%,
+      oklch(0.42 0.13 148) 100%
+    );
+  }
+
+  /* Subtle leaf-texture mesh overlay (apply on top of gradient) */
+  .pv-mesh {
+    background-image: radial-gradient(
+        ellipse at 80% 20%,
+        oklch(0.55 0.12 148 / 0.15) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse at 20% 80%,
+        oklch(0.5 0.22 258 / 0.08) 0%,
+        transparent 50%
+      );
+  }
+
+  .pv-green {
+    color: oklch(0.55 0.17 148);
+  }
+  .bg-pv-highlight {
+    background: oklch(0.95 0.06 148);
+  }
+  .bg-pv-surface {
+    background: oklch(0.97 0.005 264);
+  }
+  .dark .bg-pv-surface {
+    background: oklch(0.16 0.015 264);
+  }
+  .text-pv-green {
+    color: oklch(0.55 0.17 148);
+  }
+  .border-pv-border {
+    border-color: oklch(0.9 0.008 264);
+  }
+  .shadow-card {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  }
+}
